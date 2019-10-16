@@ -2,12 +2,15 @@
 # Defines the RPI variable which is needed by rc-switch/RCSwitch.h
 CXXFLAGS=-DRPI
 
-all: senddemo receivedemo receivedemo_json
+all: senddemo receivedemo receivedemo_json receive
 
 senddemo: rc-switch/RCSwitch.o senddemo.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 
 receivedemo: rc-switch/RCSwitch.o receivedemo.o
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
+
+receive: rc-switch/RCSwitch.o receive.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 
 receivedemo_json: rc-switch/RCSwitch.o receivedemo_json.o
