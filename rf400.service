@@ -1,0 +1,14 @@
+[Unit]
+Description=Detect RF433 switches / entities
+After=network.target
+After=network-online.target
+
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/local/bin/rf433Detection.py 
+Restart=always
+User=pi
+#Type=simple
+
+[Install]
+WantedBy=multi-user.target
